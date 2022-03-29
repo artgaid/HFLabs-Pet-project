@@ -1,6 +1,10 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
+<script setup>
+// import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "@/components/HelloWorld.vue";
+import store from "@/store";
+import { provide } from "vue";
+
+provide("store", store);
 </script>
 
 <template>
@@ -17,8 +21,8 @@ import HelloWorld from "@/components/HelloWorld.vue";
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">List</RouterLink>
+        <RouterLink to="/edit">Edit</RouterLink>
       </nav>
     </div>
   </header>
@@ -27,15 +31,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
 </template>
 
 <style>
-@import "@/assets/base.css";
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
-}
+@import "./assets/base.css";
 
 header {
   line-height: 1.5;
@@ -45,13 +41,6 @@ header {
 .logo {
   display: block;
   margin: 0 auto 2rem;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
 }
 
 @media (hover: hover) {
@@ -65,14 +54,6 @@ nav {
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
 }
 
 nav a {
@@ -89,12 +70,6 @@ nav a:first-of-type {
   body {
     display: flex;
     place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
   }
 
   header {
