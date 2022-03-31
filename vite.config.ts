@@ -8,8 +8,10 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 export default defineConfig({
   plugins: [vue(), vueJsx()],
   resolve: {
+    extensions: [".js", ".vue", ".json", ".scss"],
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
+      styles: "src/assets/scss",
     },
   },
 });
