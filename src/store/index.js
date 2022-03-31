@@ -4,32 +4,34 @@ const state = reactive({
   items: [
     {
       id: 2,
-      title: "74 deg",
+      title: 74,
     },
     {
       id: 1,
-      title: "47 deg",
+      title: 47,
     },
     {
       id: 0,
-      title: "53 deg",
+      title: 53,
     },
   ],
-  editItem: {},
 });
 
 const methods = {
-  addItem(text) {
+  // добавление в список
+  add(text) {
     state.items.unshift({
       id: Math.max(...state.items.map((i) => i.id)) + 1,
       title: text,
     });
   },
-  deleteItem(id) {
-    state.items = state.items.filter((e) => e.id !== id);
-  },
-  editItems(id) {
-    console.log("editItems : ", id);
+
+  // удаление из списка
+  delete(id) {
+    const index = state.items.findIndex((e) => e.id === id);
+    if (index !== -1) {
+      state.items.splice(index, 1);
+    }
   },
 };
 
